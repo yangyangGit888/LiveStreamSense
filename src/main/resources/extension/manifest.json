@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Douyin Live IM Hook",
+  "version": "2.0",
+  "description": "Capture Douyin Live IM messages via Array.prototype.push Hook",
+  "permissions": [
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:8080/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://live.douyin.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "world": "ISOLATED"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["page.js"],
+      "matches": ["*://live.douyin.com/*"]
+    }
+  ]
+}
